@@ -1,0 +1,55 @@
+.landing-page {
+  background-image: url(../images/header.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+ height: 150vh;
+
+
+}
+.dv1 {
+  height: 20vh;
+}
+.dv2 {
+
+  background-color: #eeeeee;
+  width: 80%;
+  margin: auto;
+  border-radius: 50px;
+  text-align: center;
+  padding: 3%;
+  color: #303841;
+
+}
+::placeholder {
+  padding: 1%;
+  color:#00adb5;
+}
+.bt1{
+  margin-top: 1%;
+}
+.dv3 {
+  height: 30vh;
+}
+#dv4 {
+background-color: none;
+
+}
+.dv5 {
+  width: 90%;
+  margin:auto;
+  border-radius: 25px;
+
+}
+.dv7 {
+  background-color: #00adb5;
+ color: #eeeeee;
+  padding: 2%;
+}
+
+.header {
+  color: white;
+  text-align: center;
+  padding: 3%;
+}
