@@ -1,57 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Recipe Finder!</title>
-    <!-- Bootstrap cdn -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- Perssonal Stylesheet! -->
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
-    <div class="landing-page">
-      <div class="dv1">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Recipe Finder!</title>
+  <!-- Bootstrap cdn -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Personal Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="landing-page">
+    <div class="dv1">
       <div class="header">
-        <h3>Find A recipe!</h3>
+        <h3>Find A Recipe!</h3>
         <p>Search for recipes using any ingredients you have.</p>
-
       </div>
-
-      </div>
-      <div class="dv2">
-        <p><strong>Enter ingredients:</strong></p>
-
-       <input type="text" id="input1"  class="input-group input-group-lg" onfocus="this.value=''" value="" placeholder="Ingredient ">
-       <p id="data1"></p>
-
-      <br>
-      <div class="row">
-        <div class="col-md-6 bt1">
-        <button type="submit" class="btn btn-dark  btn-block b1" name="button" onclick="pushData();" >Add Ingredient</button>
-        </div>
-       <div class="col-md-6 bt1">
-         <button type="submit" class="btn btn-info  btn-block b1"name="button" onclick="add();">Find me a Recipe</button>
-       </div>
-
-
-      </div>
-
-
-      </div>
-      <div class="dv3">
-
-      </div>
-      <div id="dv4">
-
-      </div>
-
     </div>
+    <div class="dv2">
+      <p><strong>Enter ingredients:</strong></p>
+      <div class="input-group mb-3">
+        <input type="text" id="input1" class="form-control" placeholder="Ingredient" aria-label="Ingredient">
+        <div class="input-group-append">
+          <button class="btn btn-dark" type="button" onclick="pushData();">Add Ingredient</button>
+        </div>
+      </div>
+      <p id="data1"></p>
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-info btn-block" type="button" onclick="add();">Find me a Recipe</button>
+        </div>
+      </div>
+    </div>
+    <div id="dv4" class="recipes-container"></div>
+  </div>
 
- <!-- Bootrap cdn -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<!-- Personal script -->
-<script src="recipe.js"></script>
-  </body>
+  <!-- Bootstrap cdn -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!-- Personal script -->
+  <script src="recipe.js"></script>
+</body>
 </html>

@@ -1,18 +1,23 @@
 .landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dv1 {
   background-image: url(../images/header.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
- height: 150vh;
-
-
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
-.dv1 {
-  height: 20vh;
-}
+
 .dv2 {
-
   background-color: #eeeeee;
   width: 80%;
   margin: auto;
@@ -20,36 +25,36 @@
   text-align: center;
   padding: 3%;
   color: #303841;
-
+  margin-top: -25vh;
 }
+
 ::placeholder {
   padding: 1%;
-  color:#00adb5;
+  color: #00adb5;
 }
-.bt1{
+
+.bt1 {
   margin-top: 1%;
 }
-.dv3 {
-  height: 30vh;
-}
+
 #dv4 {
-background-color: none;
-
-}
-.dv5 {
-  width: 90%;
-  margin:auto;
-  border-radius: 25px;
-
-}
-.dv7 {
-  background-color: #00adb5;
- color: #eeeeee;
-  padding: 2%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 10px;
 }
 
-.header {
-  color: white;
-  text-align: center;
-  padding: 3%;
+.recipes-container {
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  text-align: left;
 }
