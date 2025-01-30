@@ -1,75 +1,93 @@
-var myArr = [];
+class RecipeApp {
+  static apiBase = 'https://api.spoonacular.com/recipes';
+  static apiKey = '21cfbc10989149ada078940b57528f10';
 
-var api = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=";
-var key = "&apiKey=21cfbc10989149ada078940b57528f10";
-var number = "&number=3";
-var max = "&ranking=1";
-var id = [];
-
-const app = document.getElementById('dv4');
-const container = document.createElement('div');
-container.setAttribute('class', 'row');
-app.appendChild(container);
-
-function pushData() {
-  var inputText = document.getElementById('input1').value.trim();
-  if (inputText) {
-    myArr.push(inputText);
-    document.getElementById('input1').value = '';
-
-    var pval = myArr.map(ingredient => ingredient).join("<br>");
-    document.getElementById('data1').innerHTML = pval;
+  constructor(){
+    this.ingredients = [];
+    this.init();
   }
-}
 
-function add() {
-  var ingredients = myArr.join(',');
-  var url = api + ingredients + key + number + max;
+  init(){
+   this.container = document.getElementById('dv4');
+   this.setupEventListeners();
+   this.createLoadingSpinner();   
+  }
 
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      container.innerHTML = ''; // Clear previous results
-      data.forEach((recipe, index) => {
-        var card = createRecipeCard(recipe, index + 1);
-        container.appendChild(card);
+  createLoadingSpinner(){
+    this.loadingSpinner = document.createElement('div');
+    this.loadingSpinner.className = "spinner-border text-primary";
+    this.loadingSpinner.role="status";
+    this.loadingSpinner.innerHTML = "<span class='sr-only'>Loading...</span>";
+    this.loadingSpinner.style.display ="none";
+    this.container.parentNode.insertBefore(this.loadingSpinner, this.container);
+  }
+  setupEventListeners(){
+    document.addEventListener('click', async (event) => {
+      if (event.target.matches('.recipe-link')) {
+        const recipeId = event.target.dataset.id;
+        await this.displayRecipeDetails(recipeId);
+      }
+
+      if (event.target.matches('.close-modal')){
+        this.hideModal();
+      }
+    });
+
+    document.getElementById('input1').addEventListener('keypress', (e) => {
+      if(e.key ==='Enter') this.addIngredient();
+    });
+  }
+
+  addIngredient(){
+    const input = document.getElementById('input1');
+    const ingredient = input.value.trim();
+
+    if (ingredient) {
+      this.ingredients.push(ingredient);
+      input.value = '';
+      this.displayIngredients();
+    }
+    console.log(this.ingredients);
+  }
+  
+  displayIngredients(){
+    const ingredientsList = this.ingredients
+    .map(ingredient => `<li class ="list-group-item">${ingredient}</li>`).join('');
+
+    document.getElementById('data1').innerHTML = `<ul class="list-group mt-3">${ingredientsList}</ul>`;
+  }
+
+  async searchRecipes(){
+    if(this.ingredients.length === 0){
+      this.showError('Please add at least one ingredient');
+      return;
+    }
+    try {
+      this.showLoading();
+      const url = `${RecipeApp.apiBase}/findByIngredients?` + new URLSearchParams({
+        ingredients: this.ingredients.join(','),
+        apiKey: RecipeApp.apiKey,
+        number: 5,
+        ranking: 1
       });
-    })
-    .catch(error => console.error('Error:', error));
-}
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('API request failed');
 
-function createRecipeCard(recipe, index) {
-  var card = document.createElement('div');
-  card.setAttribute('class', 'col-lg-4 mb-4');
-
-  var cardBody = `
-    <div class="card h-100">
-      <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
-      <div class="card-body">
-        <h5 class="card-title">${recipe.title}</h5>
-        <p class="card-text">Missing ingredients: ${recipe.missedIngredients.map(ing => ing.name).join(', ')}</p>
-        <a href="#" class="btn btn-primary recipe-link" data-id="${recipe.id}">View Recipe</a>
-      </div>
-    </div>
-  `;
-  card.innerHTML = cardBody;
-  return card;
-}
-
-document.addEventListener('click', function (event) {
-  if (event.target.matches('.recipe-link')) {
-    var recipeId = event.target.getAttribute('data-id');
-    displayRecipe(recipeId);
+    const recipes = await response.json();
+    this.displayRecipes(recipes);
+    } catch (error) {
+        this.showError('Failed to fetch recipes. Please try again Later.');
+        console.error(error);
+    }finally {
+      this.hideLoading();
+    }
   }
-}, false);
 
-function displayRecipe(id) {
-  var url = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=21cfbc10989149ada078940b57528f10`;
 
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      window.open(data.sourceUrl, '_blank');
-    })
-    .catch(error => console.error('Error:', error));
+
+
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  window.recipeApp = new RecipeApp();
+});
