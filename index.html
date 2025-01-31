@@ -21,13 +21,13 @@
       <div class="input-group mb-3">
         <input type="text" id="input1" class="form-control" placeholder="Ingredient" aria-label="Ingredient">
         <div class="input-group-append">
-          <button class="btn btn-dark" type="button" onclick="pushData();">Add Ingredient</button>
+          <button class="btn btn-dark" type="button" onclick="recipeApp.addIngredient();">Add Ingredient</button>
         </div>
       </div>
       <p id="data1"></p>
       <div class="row">
         <div class="col-md-6">
-          <button class="btn btn-info btn-block" type="button" onclick="add();">Find me a Recipe</button>
+          <button class="btn btn-info btn-block" type="button" onclick="recipeApp.searchRecipes();">Find me a Recipe</button>
         </div>
       </div>
     </div>
