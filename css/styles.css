@@ -5,11 +5,11 @@
 }
 
 .dv1 {
-  background-image: url(../images/header.jpg);
+  background-image: url(../images/black.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 50vh;
+  height: 60vh;
   width: 100%;
   display: flex;
   justify-content: center;

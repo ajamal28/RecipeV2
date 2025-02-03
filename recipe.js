@@ -136,7 +136,7 @@ class RecipeApp {
               <h5 class="modal-title">${recipe.title}</h5>
               <button type="button" class="close close-modal">&times;</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="max-height: 60vh; overflow-y: auto;">
               <img src="${recipe.image}" class="img-fluid mb-3" alt="${recipe.title}">
               <h6>Instructions:</h6>
               <div>${recipe.instructions || 'No instructions available'}</div>
