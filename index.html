@@ -10,6 +10,27 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <i class="bi bi-compass me-2"></i>Culinary Compass
+      </a>
+      <div class="d-flex align-items-center gap-3">
+        <button class="btn btn-link text-decoration-none" id="themeToggle">
+          <i class="bi bi-sun-fill"></i>
+        </button>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle me-2"></i>Account
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#" id="loginBtn"><i class="bi bi-box-arrow-in-right me-2"></i>Login</a></li>
+            <li><a class="dropdown-item d-none" href="#" id="logoutBtn"><i class="bi bi-box-arrow-left me-2"></i>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
   <header class="header-section d-flex align-items-center">
     <div class="container text-center">
       <h1 class="display-3 fw-bold mb-4 text-white">Culinary Compass</h1>

@@ -1,3 +1,46 @@
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const storedTheme = localStorage.getItem('theme') || 'light';
+
+document.documentElement.setAttribute('data-bs-theme', storedTheme);
+updateThemeIcon(storedTheme);
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  
+  document.documentElement.setAttribute('data-bs-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeIcon(newTheme);
+});
+
+function updateThemeIcon(theme) {
+  themeToggle.innerHTML = theme === 'light' 
+    ? '<i class="bi bi-moon-stars"></i>'
+    : '<i class="bi bi-sun-fill"></i>';
+}
+
+// Auth State Management
+let isLoggedIn = false;
+const loginBtn = document.getElementById('loginBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+
+loginBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  isLoggedIn = true;
+  updateAuthState();
+});
+
+logoutBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  isLoggedIn = false;
+  updateAuthState();
+});
+
+function updateAuthState() {
+  loginBtn.classList.toggle('d-none', isLoggedIn);
+  logoutBtn.classList.toggle('d-none', !isLoggedIn);
+}
 class RecipeApp {
   static apiBase = 'https://api.spoonacular.com/recipes';
   static apiKey = '21cfbc10989149ada078940b57528f10';
