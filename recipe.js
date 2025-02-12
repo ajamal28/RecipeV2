@@ -43,7 +43,7 @@ function updateAuthState() {
 }
 class RecipeApp {
   static apiBase = 'https://api.spoonacular.com/recipes';
-  static apiKey = '21cfbc10989149ada078940b57528f10';
+  static apiKey = process.env.API_KEY;
 
   constructor() {
     this.ingredients = [];
